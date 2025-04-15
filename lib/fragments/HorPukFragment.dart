@@ -22,13 +22,13 @@ class _HorPukFragmentState extends State<HorPukFragment> {
         appBar: AppBar(
           title: Text("Roomality", style: GoogleFonts.prompt(fontSize: 20,color: Color.fromARGB(255, 66, 62, 95))),
           // logo image
-          leading: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-            'assets/images/roomality.png',
-            fit: BoxFit.cover,
-            ),
-          ),
+          // leading: Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Image.asset(
+          //   'assets/images/roomality.png',
+          //   fit: BoxFit.cover,
+          //   ),
+          // ),
           backgroundColor: Color(0xFFA695AF),
           //backgroundColor: Color(0xFFFFFFFF),
           centerTitle: true,

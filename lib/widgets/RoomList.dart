@@ -88,7 +88,8 @@ class _RoomListState extends State<RoomList> {
                                           ),
                                         ),
                                         Text(
-                                          "สถานะการชำระ : ${roomData[index].paymentState}",
+                                          //"สถานะการชำระ : ${roomData[index].paymentStatus}",
+                                          "สถานะการชำระ : ",
                                           style: GoogleFonts.prompt(
                                             fontSize: 18,
                                           ),
@@ -131,7 +132,8 @@ class _RoomListState extends State<RoomList> {
                                             ),
                                           ),
                                           Text(
-                                            "ระยะสัญญา : ${roomData[index].contract}",
+                                            //"ระยะสัญญา : ${roomData[index].contract}",
+                                            "ระยะสัญญา : ",
                                             style: GoogleFonts.prompt(
                                               fontSize: 16,
                                             ),

@@ -8,21 +8,48 @@ enum PaymentStatus {
   final Color iconColor;
 }
 
+class Tenant {
+  Tenant({
+    required this.tenantName,
+    required this.depositPrice,
+    required this.rentalStartUnix,
+    required this.contract,
+    required this.paymentStatus,
+  });
+
+  String tenantName;
+  int depositPrice;
+  int rentalStartUnix;
+  int contract;
+  int paymentStatus;
+}
+
 class Room {
   Room({
     required this.roomName,
     required this.monthlyPrice,
-    required this.depositPrice,
-    required this.rentalStartUnix,
-    required this.contract,
-    required this.paymentState,
+    
+    
   });
   String roomName;
   int monthlyPrice;
-  int depositPrice;
-  int rentalStartUnix;
-  int contract;
-  bool paymentState;
+  Tenant? tenant;
+  
+  void addTenant(String tenantName,int depositPrice,int rentalStartUnix,int contract,int paymentStatus){
+    tenant = Tenant(tenantName:tenantName ,depositPrice: depositPrice, rentalStartUnix: rentalStartUnix, contract: contract, paymentStatus: paymentStatus);
+  }
+
+  void deleteTenant(String confirm){
+    if(confirm == "confirm"){
+      tenant = null;
+    }
+  }
+
+  Tenant? showTenant(){
+    return tenant;
+  }
+
+ 
 }
 
 class SubRoom {
@@ -66,27 +93,14 @@ List<Room> roomData = [
   Room(
     roomName: "101",
     monthlyPrice: 1000,
-    depositPrice: 1200,
-    rentalStartUnix: 1521255,
-    contract: 12,
-    paymentState: false,
+    
   ),
   Room(
     roomName: "102",
     monthlyPrice: 1000,
-    depositPrice: 1200,
-    rentalStartUnix: 1521255,
-    contract: 12,
-    paymentState: false,
+  
   ),
-  Room(
-    roomName: "102",
-    monthlyPrice: 1000,
-    depositPrice: 1200,
-    rentalStartUnix: 1521255,
-    contract: 12,
-    paymentState: false,
-  ),
+  
 ];
 
 List<HorPuk> horPukData = [

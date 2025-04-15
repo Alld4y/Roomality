@@ -4,7 +4,6 @@ import 'package:roomality/models/room.dart';
 import 'package:roomality/widgets/HorPukList.dart';
 import 'package:roomality/widgets/MainFrameNavigator.dart';
 import 'package:roomality/widgets/RoomList.dart';
-import 'package:roomality/widgets/RoomalityAppBar.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
