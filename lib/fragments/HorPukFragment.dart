@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:roomality/fragments/mainFrame.dart';
+import 'package:roomality/widgets/HorPukRoom.dart';
 
-void main() {
-  runApp(Home());
+class HorPukFragment extends StatefulWidget {
+  final int index;
+  final int row;
+  final int floor;
+  final int room;
+  const HorPukFragment({super.key, required this.index, required this.row, required this.floor, required this.room});
+
+  @override
+  State<HorPukFragment> createState() => _HorPukFragmentState();
 }
 
-class Home extends StatelessWidget {
-  const Home({super.key});
-
+class _HorPukFragmentState extends State<HorPukFragment> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,8 +34,8 @@ class Home extends StatelessWidget {
           centerTitle: true,
           elevation: 0,
           scrolledUnderElevation: 0,
-        ),  
-          body: MainPage()
+        ),
+          body: HorPukRoom(index: widget.index,row: widget.row,floor:widget.floor,room:widget.room)
       ),
     );
   }

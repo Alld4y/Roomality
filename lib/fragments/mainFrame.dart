@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:roomality/models/room.dart';
 import 'package:roomality/widgets/HorPukList.dart';
+import 'package:roomality/widgets/MainFrameNavigator.dart';
 import 'package:roomality/widgets/RoomList.dart';
+import 'package:roomality/widgets/RoomalityAppBar.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -20,33 +22,42 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-          child: Text(
-            "รายการห้องเช่าของฉัน : ${roomData.length} ห้อง",
-            style: GoogleFonts.prompt(
-              textStyle: TextStyle(fontSize: 20, color: greyTextColor),
+    return SingleChildScrollView(
+      //physics: BouncingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //const RoomalityAppBar(),
+            const SizedBox(height: 20),
+            MainFrameNavigator(),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+              child: Text(
+                "รายการห้องเช่าของฉัน : ${roomData.length} ห้อง",
+                style: GoogleFonts.prompt(
+                  textStyle: TextStyle(fontSize: 20, color: greyTextColor),
+                ),
+              ),
             ),
-          ),
-        ),
-        RoomList(),
-        const SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-          child: Text(
-            "รายการหอพักของฉัน : ${horPukData.length} หอพัก",
-            style: GoogleFonts.prompt(
-              textStyle: TextStyle(fontSize: 20, color: greyTextColor),
+            RoomList(),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+              child: Text(
+                "รายการหอพักของฉัน : ${horPukData.length} หอพัก",
+                style: GoogleFonts.prompt(
+                  textStyle: TextStyle(fontSize: 20, color: greyTextColor),
+                ),
+              ),
             ),
-          ),
+            HorPukList(),
+          ],
         ),
-        HorPukList(),
-      ],
+      ),
     );
   }
 }
