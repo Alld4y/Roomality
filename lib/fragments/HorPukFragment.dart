@@ -16,9 +16,7 @@ class HorPukFragment extends StatefulWidget {
 class _HorPukFragmentState extends State<HorPukFragment> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Roomality",
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text("Roomality", style: GoogleFonts.prompt(fontSize: 20,color: Color.fromARGB(255, 66, 62, 95))),
           // logo image
@@ -36,7 +34,6 @@ class _HorPukFragmentState extends State<HorPukFragment> {
           scrolledUnderElevation: 0,
         ),
           body: HorPukRoom(index: widget.index,row: widget.row,floor:widget.floor,room:widget.room)
-      ),
-    );
+      );
   }
 }

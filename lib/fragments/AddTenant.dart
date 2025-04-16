@@ -12,9 +12,7 @@ class AddTenantFragment extends StatefulWidget {
 class _AddTenantFragmentState extends State<AddTenantFragment> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Roomality",
-      home: Scaffold(
+    return Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
           title: Text("เพิ่มข้อมูลห้องเช่า", style: GoogleFonts.prompt(fontSize: 20, color: Color.fromARGB(255, 66, 62, 95))),
@@ -33,8 +31,7 @@ class _AddTenantFragmentState extends State<AddTenantFragment> {
           scrolledUnderElevation: 0,
         ),
           body: AddRoom()
-      ),
-    );
+      );
   }
 }
 

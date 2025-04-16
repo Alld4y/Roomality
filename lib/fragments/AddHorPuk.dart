@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:roomality/main.dart';
-import 'package:roomality/models/room.dart';
 import 'package:roomality/provider/roomProvider.dart';
 import 'package:video_player/video_player.dart';
 
-class AddRoomFragment extends StatefulWidget {
-  const AddRoomFragment({super.key});
+class AddHorPukFragment extends StatefulWidget {
+  const AddHorPukFragment({super.key});
 
   @override
-  State<AddRoomFragment> createState() => _AddRoomFragmentState();
+  State<AddHorPukFragment> createState() => _AddHorPukFragmentState();
 }
 
-class _AddRoomFragmentState extends State<AddRoomFragment> {
+class _AddHorPukFragmentState extends State<AddHorPukFragment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,20 +33,20 @@ class _AddRoomFragmentState extends State<AddRoomFragment> {
           elevation: 0,
           scrolledUnderElevation: 0,
         ),
-          body: AddRoom(),
+          body: AddHorPuk(),
           
       );
   }
 }
 
-class AddRoom extends StatefulWidget {
-  const AddRoom({super.key});
+class AddHorPuk extends StatefulWidget {
+  const AddHorPuk({super.key});
 
   @override
-  State<AddRoom> createState() => _AddRoomState();
+  State<AddHorPuk> createState() => _AddHorPukState();
 }
 
-class _AddRoomState extends State<AddRoom> {
+class _AddHorPukState extends State<AddHorPuk> {
   Color textFieldColor = Color.fromARGB(153, 255, 255, 255);
   late VideoPlayerController _controller;
   late Future<void> _initializedVideoPlayerFuture;
@@ -201,8 +200,9 @@ class _AddRoomState extends State<AddRoom> {
               Center(child: ElevatedButton(onPressed: () {
                 _formKey.currentState!.validate();
                 _formKey.currentState!.save();
-                roomProvider.createRoom(Room(roomName: _roomNameInput ?? '1', monthlyPrice: _monthlyPriceInput ?? 0));
-                print(roomProvider.roomData);
+
+
+
                 _formKey.currentState!.reset();
                 Navigator.pop(
                 context,

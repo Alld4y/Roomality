@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:roomality/fragments/AddHorPuk.dart';
 import 'package:roomality/fragments/AddRoom.dart';
 
 class MainFrameNavigator extends StatefulWidget {
@@ -52,8 +53,10 @@ class _MainFrameNavigatorState extends State<MainFrameNavigator> {
                children: [
                  InkWell(
                   borderRadius: BorderRadius.all(Radius.circular(100)),
-                  onTap: () {},
-                   child: Container( // Add Room
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const AddHorPukFragment()));
+                  },
+                   child: Container( // Add HorPuk
                      width: 60,
                      height: 60,
                      decoration: BoxDecoration(

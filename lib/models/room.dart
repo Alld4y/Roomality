@@ -28,11 +28,12 @@ class Room {
   Room({
     required this.roomName,
     required this.monthlyPrice,
-    
+    timeStamp
     
   });
   String roomName;
   int monthlyPrice;
+  DateTime timeStamp = DateTime.now();
   Tenant? tenant;
   
   void addTenant(String tenantName,int depositPrice,int rentalStartUnix,int contract,int paymentStatus){
@@ -89,19 +90,6 @@ class HorPukFloor {
   HorPukFloor({required this.floorName, required this.rooms});
 }
 
-List<Room> roomData = [
-  Room(
-    roomName: "101",
-    monthlyPrice: 1000,
-    
-  ),
-  Room(
-    roomName: "102",
-    monthlyPrice: 1000,
-  
-  ),
-  
-];
 
 List<HorPuk> horPukData = [
   HorPuk(
