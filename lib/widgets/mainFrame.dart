@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:roomality/models/room.dart';
+import 'package:roomality/provider/HorPukProvider.dart';
 import 'package:roomality/provider/roomProvider.dart';
 import 'package:roomality/widgets/HorPukList.dart';
 import 'package:roomality/widgets/MainFrameNavigator.dart';
@@ -25,7 +25,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Consumer<RoomProvider>(builder: (context,RoomProvider roomProvider, Widget? child){
        
-      return SingleChildScrollView(
+      return Consumer(builder: (context,HorPukProvider horPukProvider , Widget? child){
+          return SingleChildScrollView(
       //physics: BouncingScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.only(bottom: 30),
@@ -51,7 +52,7 @@ class _MainPageState extends State<MainPage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
               child: Text(
-                "รายการหอพักของฉัน : ${horPukData.length} หอพัก",
+                "รายการหอพักของฉัน : ${horPukProvider.horPukData.length} หอพัก",
                 style: GoogleFonts.prompt(
                   textStyle: TextStyle(fontSize: 20, color: greyTextColor),
                 ),
@@ -62,6 +63,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
     );
+      });
     });
   }
 }

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:roomality/models/room.dart';
@@ -18,6 +17,31 @@ class RoomDB{
     DatabaseFactory dbFactory = await databaseFactoryIo;
     Database db = await dbFactory.openDatabase(dbLocation);
     return db;
+  }
+
+  Future<void> insertHorPuk(HorPuk horPuk) async {
+    print("insert horPuk list");
+    var db = await openDatabase();
+    var store = intMapStoreFactory.store("horPuk");
+
+      await store.add(db, horPuk.toJson());
+    print("Inserted $horPuk horPuk items");
+  }
+
+  Future<List<HorPuk>> loadAllHorPuk() async {
+    print("Load All HorPuk List From Local Database Sembast");
+    var db = await openDatabase();
+    var store = intMapStoreFactory.store("horPuk");
+    List<RecordSnapshot<int, Map<String, Object?>>> horPukSnapShot = await store.find(db);
+    print("horPukSnapShot = $horPukSnapShot");
+    print("horPukSnapShot.length = ${horPukSnapShot.length}");
+    List<HorPuk> horPukList = horPukSnapShot.map((snapshot){
+      final data = snapshot.value as Map<String,dynamic>;
+      return HorPuk.fromJson(data);
+    }).toList();
+    return horPukList;
+    // HorPukProvider().horPukData.addAll(horPukList);
+    // print("HorPukProvider().horPukData = ${HorPukProvider().horPukData}");
   }
 
   Future<int> insertRoom(Room room) async {
@@ -51,4 +75,9 @@ class RoomDB{
       return roomList;
   }
 
+  deleteStore(String store) async {
+    var db = await openDatabase();
+    var st = intMapStoreFactory.store(store);
+    await st.delete(db);
+  }
 }

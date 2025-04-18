@@ -204,9 +204,9 @@ class _AddRoomState extends State<AddRoom> {
                 roomProvider.createRoom(Room(roomName: _roomNameInput ?? '1', monthlyPrice: _monthlyPriceInput ?? 0));
                 print(roomProvider.roomData);
                 _formKey.currentState!.reset();
-                Navigator.pop(
+                Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (ctx) => const Home()), // MaterialPageRoute
+                MaterialPageRoute(builder: (ctx) => const Home()),(route) => false, // MaterialPageRoute
               );
               }, child: Text("ยืนยัน"))),
              

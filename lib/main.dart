@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:roomality/provider/HorPukProvider.dart';
 import 'package:roomality/provider/roomProvider.dart';
 import 'package:roomality/widgets/mainFrame.dart';
 
-void main() {
+void main() async {
   runApp(Home());
+  // await RoomDB(dbName: "rooms.db").deleteStore("horPuk");
 }
 
 class Home extends StatelessWidget {
@@ -16,9 +18,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context){
-          return RoomProvider();
-        })
+        ChangeNotifierProvider(create: (context)=> RoomProvider()),
+        ChangeNotifierProvider(create: (context) => HorPukProvider())
       ],
       child: MaterialApp(
         title: "Roomality",
