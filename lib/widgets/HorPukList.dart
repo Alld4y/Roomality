@@ -533,6 +533,15 @@ class _HorPukListState extends State<HorPukList> {
                                                     isRowBottomRadius[index][row] = !isRowBottomRadius[index][row];
                                                     isRowTopRadius[index][row + 1] = !isRowTopRadius[index][row + 1];
                                                   }
+                                                 
+                                                  for(int floor = 0 ; floor < horPukProvider.horPukData[index].rows[row].floor.length ; floor++){
+                                                     if(!(horPukProvider.horPukData[index].rows[row].floor.length -1 == floor)){
+                                                      isFloorBottomRadius[index][row][floor] = false;
+                                                    }
+                                                      isFloorTopRadius[index][row][floor] = false;
+
+                                                  }
+                                                  
 
                                                   if (horPukProvider.horPukData[index].rows[row].floor.length == 1) {
                                                     isExpandedFloor[index][row][0][0] =
