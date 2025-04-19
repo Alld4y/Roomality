@@ -48,6 +48,8 @@ class _HorPukListState extends State<HorPukList> {
 
   int radiusInitState = 0;
 
+  int renderHack = 0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -61,7 +63,7 @@ class _HorPukListState extends State<HorPukList> {
     return Consumer(
       builder: (context, HorPukProvider horPukProvider, Widget? child) {
         // horPukProvider.initHorPukData();
-        if(radiusInitState < Provider.of<HorPukProvider>(context,listen: false).horPukData.length){
+        if(radiusInitState < horPukProvider.horPukData.length){
         print("horPukProvider = $horPukProvider");
             bottomRowRadius = List.generate(
     horPukProvider.horPukData.expand((horPuk) => horPuk.rows).length,
@@ -179,7 +181,7 @@ class _HorPukListState extends State<HorPukList> {
         }
       }
     }
-    print(isExpandedList);
+    print("isExpandedRow = $isExpandedRow");
     print(isExpandedListFloor);
     print(isExpandedListRow);
 
@@ -402,6 +404,49 @@ class _HorPukListState extends State<HorPukList> {
                                             ? 0
                                             : 5;
                                   });
+                                  setState(() {
+                                                for(int row = 0 ; row < horPukProvider.horPukData[index].rows.length ; row++){
+                                                  isExpandedRow[index][row][0] = false;
+                                                               print("isExpandedRow = $isExpandedRow");
+                                              print("isRowBottomRadius = $isRowBottomRadius");
+
+                                                }
+                                              });
+
+                                              // แล้วค่อย update อย่างอื่นในรอบถัดไป
+                                                  Future.delayed(Duration(milliseconds: 10), () {
+                                               for(int row = 0 ; row < horPukProvider.horPukData[index].rows.length ; row++){
+
+                                                setState(() {
+                                                  if(renderHack==0){
+                                                    if (!(horPukProvider.horPukData[index].rows.length - 1 == row)) {
+                                                    isRowBottomRadius[index][row] = true;
+                                                  }
+                                                  isRowTopRadius[index][row + 1] = false;
+                                                  }
+
+
+                                                  // if (horPukProvider.horPukData[index].rows[row].floor.length == 1) {
+                                                  //   isExpandedFloor[index][row][0][0] =
+                                                  //       !isExpandedFloor[index][row][0][0];
+                                                  // } else {
+                                                  //   for (int floor = 0;
+                                                  //       floor < horPukProvider.horPukData[index].rows[row].floor.length;
+                                                  //       floor++) {
+                                                  //     isExpandedFloor[index][row][floor][0] = false;
+                                                  //   }
+                                                  // }
+                                                                 print("isExpandedRow = $isExpandedRow");
+                                              print("isRowBottomRadius = $isRowBottomRadius");
+
+                                                });
+                                                  }
+                                                  setState(() {
+                                                    renderHack = renderHack+1;
+                                                  });
+                                              });
+                                               
+                                              
                                 },
                                 child: Container(
                                   width: 370,
@@ -460,32 +505,42 @@ class _HorPukListState extends State<HorPukList> {
                                         children: [
                                           InkWell(
                                             onTap: () {
-                                                print("กด index: $index row: $row");
+                                              print("กด index: $index row: $row");
+                                              print("isExpandedRow = $isExpandedRow");
+                                              print("isRowBottomRadius = $isRowBottomRadius");
 
+                                              // แก้เฉพาะ isExpandedRow ก่อน
+                                              setState(() {
+                                                isExpandedRow[index][row][0] = !isExpandedRow[index][row][0];
+                                                               print("isExpandedRow = $isExpandedRow");
+                                              print("isRowBottomRadius = $isRowBottomRadius");
+
+                                              });
+
+                                              // แล้วค่อย update อย่างอื่นในรอบถัดไป
+                                              Future.delayed(Duration(milliseconds: 10), () {
                                                 setState(() {
-                                                  isExpandedRow[index][row][0] = !isExpandedRow[index][row][0];
-                                                });
+                                                  if (!(horPukProvider.horPukData[index].rows.length - 1 == row)) {
+                                                    isRowBottomRadius[index][row] = !isRowBottomRadius[index][row];
+                                                    isRowTopRadius[index][row + 1] = !isRowTopRadius[index][row + 1];
+                                                  }
 
-                                                Future.delayed(Duration(milliseconds: 10), () {
-                                                  setState(() {
-                                                    if (!(horPukProvider.horPukData[index].rows.length - 1 == row)) {
-                                                      isRowBottomRadius[index][row] = !isRowBottomRadius[index][row];
-                                                      isRowTopRadius[index][row + 1] = !isRowTopRadius[index][row + 1];
+                                                  if (horPukProvider.horPukData[index].rows[row].floor.length == 1) {
+                                                    isExpandedFloor[index][row][0][0] =
+                                                        !isExpandedFloor[index][row][0][0];
+                                                  } else {
+                                                    for (int floor = 0;
+                                                        floor < horPukProvider.horPukData[index].rows[row].floor.length;
+                                                        floor++) {
+                                                      isExpandedFloor[index][row][floor][0] = false;
                                                     }
+                                                  }
+                                                                 print("isExpandedRow = $isExpandedRow");
+                                              print("isRowBottomRadius = $isRowBottomRadius");
 
-                                                    if (horPukProvider.horPukData[index].rows[row].floor.length == 1) {
-                                                      isExpandedFloor[index][row][0][0] =
-                                                          !isExpandedFloor[index][row][0][0];
-                                                    } else {
-                                                      for (int floor = 0;
-                                                          floor < horPukProvider.horPukData[index].rows[row].floor.length;
-                                                          floor++) {
-                                                        isExpandedFloor[index][row][floor][0] = false;
-                                                      }
-                                                    }
-                                                  });
                                                 });
-                                              },
+                                              });
+                                            },
                                             child: AnimatedSize(
                                               duration: Duration(
                                                 milliseconds: 500,
