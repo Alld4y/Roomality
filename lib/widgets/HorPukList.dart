@@ -292,8 +292,10 @@ class _HorPukListState extends State<HorPukList> {
                                                   .length;
                                           k++
                                         ) {
-                                          if (isExpandedRow[index][j].isNotEmpty) {
+                                          if(index < isExpandedRow.length && j < isExpandedRow[index].length){
+                                            if (isExpandedRow[index].isNotEmpty && isExpandedRow[index][j].isNotEmpty) {
                                           isExpandedRow[index][j][0] = false;
+                                          }
                                           }
                                         }
                                       }
@@ -458,68 +460,32 @@ class _HorPukListState extends State<HorPukList> {
                                         children: [
                                           InkWell(
                                             onTap: () {
-                                              setState(() {
-                                                print(
-                                                  "index: $index row: $row ",
-                                                );
-                                                print(
-                                                  "rowRoomIndexRanges : ${rowRoomIndexRanges.length}",
-                                                );
-                                                print(
-                                                  "rowRowIndexRanges : ${rowRoomIndexRanges.length}",
-                                                );
-                                                print(
-                                                  "horPukFloorHeight : ${horPukFloorHeight.length}",
-                                                );
+                                                print("กด index: $index row: $row");
 
-                                                print(
-                                                  "isRowBottomRadius  $isRowBottomRadius",
-                                                );
-                                                isExpandedRow[index][row][0] =
-                                                    !isExpandedRow[index][row][0];
+                                                setState(() {
+                                                  isExpandedRow[index][row][0] = !isExpandedRow[index][row][0];
+                                                });
 
-                                                // for(int floor = 0 ; floor < isExpandedRow[index][row].length ; floor++){ // Expanded
-                                                //   for(int room = 0 ; room < isExpandedFloor[index][row][floor].length ; room++){
-                                                //     if(isExpandedRow[index][row][0] == false){
-                                                //       isExpandedFloor[index][row][floor][room] = false;
-                                                //     }
-                                                //   }
-                                                // }
+                                                Future.delayed(Duration(milliseconds: 10), () {
+                                                  setState(() {
+                                                    if (!(horPukProvider.horPukData[index].rows.length - 1 == row)) {
+                                                      isRowBottomRadius[index][row] = !isRowBottomRadius[index][row];
+                                                      isRowTopRadius[index][row + 1] = !isRowTopRadius[index][row + 1];
+                                                    }
 
-                                                if (!(horPukProvider
-                                                            .horPukData[index]
-                                                            .rows
-                                                            .length -
-                                                        1 ==
-                                                    row)) {
-                                                  // Radius
-                                                  isRowBottomRadius[index][row] =
-                                                      !isRowBottomRadius[index][row];
-                                                  isRowTopRadius[index][row +
-                                                          1] =
-                                                      !isRowTopRadius[index][row +
-                                                          1];
-                                                }
-                                                if (horPukProvider
-                                                        .horPukData[index]
-                                                        .rows[row]
-                                                        .floor
-                                                        .length ==
-                                                    1) {
-                                                  //for(int i = 0 ; i < horPukData[index].row[row].floor[0].rooms.length ; i++){
-                                                  print(
-                                                    isExpandedFloor[index][row][0][0],
-                                                  );
-                                                  isExpandedFloor[index][row][0][0] =
-                                                      !isExpandedFloor[index][row][0][0];
-                                                  print(
-                                                    isExpandedFloor[index][row][0][0],
-                                                  );
-
-                                                  // }
-                                                }
-                                              });
-                                            },
+                                                    if (horPukProvider.horPukData[index].rows[row].floor.length == 1) {
+                                                      isExpandedFloor[index][row][0][0] =
+                                                          !isExpandedFloor[index][row][0][0];
+                                                    } else {
+                                                      for (int floor = 0;
+                                                          floor < horPukProvider.horPukData[index].rows[row].floor.length;
+                                                          floor++) {
+                                                        isExpandedFloor[index][row][floor][0] = false;
+                                                      }
+                                                    }
+                                                  });
+                                                });
+                                              },
                                             child: AnimatedSize(
                                               duration: Duration(
                                                 milliseconds: 500,
