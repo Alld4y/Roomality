@@ -50,6 +50,8 @@ class _HorPukListState extends State<HorPukList> {
 
   int renderHack = 0;
 
+  bool have1RowInHorPuk = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -62,6 +64,14 @@ class _HorPukListState extends State<HorPukList> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, HorPukProvider horPukProvider, Widget? child) {
+        for(int count = 0 ; count < horPukProvider.horPukData.length ; count++){
+          if(horPukProvider.horPukData[count].rows.length == 1){
+            print("Have 1 Row In HorPuk");
+            have1RowInHorPuk = true;
+          }else{
+            have1RowInHorPuk = false;
+          }
+        }
         // horPukProvider.initHorPukData();
         if(radiusInitState < horPukProvider.horPukData.length){
         print("horPukProvider = $horPukProvider");
@@ -312,52 +322,48 @@ class _HorPukListState extends State<HorPukList> {
                                     if (horPukRowHeight[index] == 0) {
                                       // close
 
-                                      for (
-                                        int i = 0;
-                                        i < horPukProvider.horPukData.length;
-                                        i++
-                                      ) {
+                                      
                                         for (
                                           int j = 0;
                                           j <
                                               horPukProvider
-                                                  .horPukData[i]
+                                                  .horPukData[index]
                                                   .rows
                                                   .length;
                                           j++
                                         ) {
-                                          isRowTopRadius[i][j] = false;
+                                          isRowTopRadius[index][j] = false;
                                           if (j !=
                                               horPukProvider
-                                                      .horPukData[i]
+                                                      .horPukData[index]
                                                       .rows
                                                       .length -
                                                   1) {
-                                            isRowBottomRadius[i][j] = false;
+                                            isRowBottomRadius[index][j] = false;
                                           }
                                           for (
                                             int k = 0;
                                             k <
                                                 horPukProvider
-                                                    .horPukData[i]
+                                                    .horPukData[index]
                                                     .rows[j]
                                                     .floor
                                                     .length;
                                             k++
                                           ) {
-                                            isFloorTopRadius[i][j][k] = false;
+                                            isFloorTopRadius[index][j][k] = false;
                                             if (k !=
                                                 horPukProvider
-                                                        .horPukData[i]
+                                                        .horPukData[index]
                                                         .rows[j]
                                                         .floor
                                                         .length -
                                                     1) {
-                                              isFloorBottomRadius[i][j][k] =
+                                              isFloorBottomRadius[index][j][k] =
                                                   false;
                                             }
                                           }
-                                        }
+                                        
                                       }
 
                                       print("this   $isRowBottomRadius");
@@ -404,7 +410,9 @@ class _HorPukListState extends State<HorPukList> {
                                             ? 0
                                             : 5;
                                   });
-                                  setState(() {
+                                  
+                                  if(have1RowInHorPuk){
+                                    setState(() {
                                                 for(int row = 0 ; row < horPukProvider.horPukData[index].rows.length ; row++){
                                                   isExpandedRow[index][row][0] = false;
                                                                print("isExpandedRow = $isExpandedRow");
@@ -413,7 +421,7 @@ class _HorPukListState extends State<HorPukList> {
                                                 }
                                               });
 
-                                              // แล้วค่อย update อย่างอื่นในรอบถัดไป
+                                                // แล้วค่อย update อย่างอื่นในรอบถัดไป
                                                   Future.delayed(Duration(milliseconds: 10), () {
                                                for(int row = 0 ; row < horPukProvider.horPukData[index].rows.length ; row++){
 
@@ -446,6 +454,7 @@ class _HorPukListState extends State<HorPukList> {
                                                   });
                                               });
                                                
+                                  }
                                               
                                 },
                                 child: Container(
