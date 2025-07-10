@@ -1,0 +1,242 @@
+. 2*3*4 :
+
+```json
+{
+  "horPukName": "Yayayayay",
+  "rows": [
+    {
+      "rowName": "แถวที่ 1",
+      "floor": [
+        {
+          "floorName": "ชั้นที่ 1",
+          "rooms": [
+            {
+              "roomName": "1101",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.089767",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1102",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.089786",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1103",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.089805",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1104",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.089823",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            }
+          ]
+        },
+        {
+          "floorName": "ชั้นที่ 2",
+          "rooms": [
+            {
+              "roomName": "1201",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.089956",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1202",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.089973",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1203",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.089989",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1204",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.090002",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            }
+          ]
+        },
+        {
+          "floorName": "ชั้นที่ 3",
+          "rooms": [
+            {
+              "roomName": "1301",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.090738",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1302",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.090776",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1303",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.090852",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "1304",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091005",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rowName": "แถวที่ 2",
+      "floor": [
+        {
+          "floorName": "ชั้นที่ 1",
+          "rooms": [
+            {
+              "roomName": "2101",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091262",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2102",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091282",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2103",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091300",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2104",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091322",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            }
+          ]
+        },
+        {
+          "floorName": "ชั้นที่ 2",
+          "rooms": [
+            {
+              "roomName": "2201",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091590",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2202",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091676",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2203",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091718",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2204",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.091733",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            }
+          ]
+        },
+        {
+          "floorName": "ชั้นที่ 3",
+          "rooms": [
+            {
+              "roomName": "2301",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.092240",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2302",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.092263",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2303",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.092286",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            },
+            {
+              "roomName": "2304",
+              "monthlyPrice": 1300,
+              "depositPrice": 2600,
+              "rentalStartUnix": "2025-06-23T15:02:42.092303",
+              "contract": 12,
+              "paymentStatus": "noTenant"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "createdAt": "2025-06-23T15:02:42.179792"
+}
+```
