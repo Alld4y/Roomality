@@ -52,6 +52,21 @@ class _HorPukListState extends State<HorPukList> {
 
   bool have1RowInHorPuk = false;
 
+    String toolTipMessage(String paymentStatusName){
+    switch(paymentStatusName){
+      case "noTenant":
+        return "ยังไม่มีผู้เช่า";
+      case "complete":
+        return "ชำระเงินแล้ว";
+      case "overDue":
+        return "ค้างชำระเกินกำหนด";
+      case "pending":
+        return "รอการชำระเงิน";
+      default:
+      return "สถานะไม่ตรง";
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -62,7 +77,8 @@ class _HorPukListState extends State<HorPukList> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
+    return SafeArea(
+      child: Consumer(
       builder: (context, HorPukProvider horPukProvider, Widget? child) {
         for(int count = 0 ; count < horPukProvider.horPukData.length ; count++){
           if(horPukProvider.horPukData[count].rows.length == 1){
@@ -229,7 +245,7 @@ class _HorPukListState extends State<HorPukList> {
     
         return Center(
           child: Container(
-            width: 370,
+            width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Color(0xFF6D669D), width: 2),
@@ -458,7 +474,7 @@ class _HorPukListState extends State<HorPukList> {
                                               
                                 },
                                 child: Container(
-                                  width: 370,
+                                  // width: MediaQuery.of(context).size.width * 0.9,
                                   height: 40,
                                   decoration: BoxDecoration(
                                     color: Color(0x556D669D),
@@ -483,13 +499,13 @@ class _HorPukListState extends State<HorPukList> {
                                         Text(
                                           "หอพัก ${horPukProvider.horPukData[index].horPukName}",
                                           style: GoogleFonts.prompt(
-                                            fontSize: 18,
+                                            fontSize: 16,
                                           ),
                                         ),
                                         Text(
                                           "จำนวนห้องพัก : ${(horPukProvider.horPukData[index].rows.fold(0, (prev, element) => prev + element.floor.fold(0, (prev, element) => element.rooms.length + prev)))} ห้อง",
                                           style: GoogleFonts.prompt(
-                                            fontSize: 18,
+                                            fontSize: 16,
                                           ),
                                         ),
                                       ],
@@ -599,7 +615,7 @@ class _HorPukListState extends State<HorPukList> {
                                                         .rows[row]
                                                         .rowName,
                                                     style: GoogleFonts.prompt(
-                                                      fontSize: 17,
+                                                      fontSize: 15,
                                                     ),
                                                   ),
                                                 ),
@@ -687,7 +703,7 @@ class _HorPukListState extends State<HorPukList> {
                                                                     "ห้อง ${horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].roomName}",
                                                                     style: GoogleFonts.prompt(
                                                                       fontSize:
-                                                                          17,
+                                                                          15,
                                                                     ),
                                                                   ),
                                                                   Row(
@@ -696,21 +712,24 @@ class _HorPukListState extends State<HorPukList> {
                                                                         "สถานะ : ",
                                                                         style: GoogleFonts.prompt(
                                                                           fontSize:
-                                                                              16,
+                                                                              14,
                                                                         ),
                                                                       ),
-                                                                      Icon(
-                                                                        (horPukProvider
-                                                                            .horPukData[index]
-                                                                            .rows[row]
-                                                                            .floor[floor]
-                                                                            .rooms[room]
-                                                                            .paymentStatus
-                                                                            .icon),
-                                                                        color:
-                                                                            horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].paymentStatus.iconColor,
-                                                                        size:
-                                                                            24,
+                                                                      Tooltip(
+                                                                        message: toolTipMessage(horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].paymentStatus.name),
+                                                                        child: Icon(
+                                                                          (horPukProvider
+                                                                              .horPukData[index]
+                                                                              .rows[row]
+                                                                              .floor[floor]
+                                                                              .rooms[room]
+                                                                              .paymentStatus
+                                                                              .icon),
+                                                                          color:
+                                                                              horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].paymentStatus.iconColor,
+                                                                          size:
+                                                                              24,
+                                                                        ),
                                                                       ),
                                                                     ],
                                                                   ),
@@ -802,7 +821,7 @@ class _HorPukListState extends State<HorPukList> {
                                                                 style:
                                                                     GoogleFonts.prompt(
                                                                       fontSize:
-                                                                          17,
+                                                                          15,
                                                                     ),
                                                               ),
                                                             ),
@@ -874,7 +893,7 @@ class _HorPukListState extends State<HorPukList> {
                                                                           "ห้อง ${horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].roomName}",
                                                                           style: GoogleFonts.prompt(
                                                                             fontSize:
-                                                                                17,
+                                                                                15,
                                                                           ),
                                                                         ),
                                                                         Row(
@@ -883,16 +902,25 @@ class _HorPukListState extends State<HorPukList> {
                                                                               "สถานะ : ",
                                                                               style: GoogleFonts.prompt(
                                                                                 fontSize:
-                                                                                    16,
+                                                                                    14,
                                                                               ),
                                                                             ),
-                                                                            Icon(
-                                                                              (horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].paymentStatus.icon),
-                                                                              color:
-                                                                                  horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].paymentStatus.iconColor,
-                                                                              size:
-                                                                                  24,
-                                                                            ),
+                                                                            Tooltip(
+                                                                        message: toolTipMessage(horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].paymentStatus.name),
+                                                                        child: Icon(
+                                                                          (horPukProvider
+                                                                              .horPukData[index]
+                                                                              .rows[row]
+                                                                              .floor[floor]
+                                                                              .rooms[room]
+                                                                              .paymentStatus
+                                                                              .icon),
+                                                                          color:
+                                                                              horPukProvider.horPukData[index].rows[row].floor[floor].rooms[room].paymentStatus.iconColor,
+                                                                          size:
+                                                                              24,
+                                                                        ),
+                                                                      ),
                                                                           ],
                                                                         ),
                                                                         ShowDetail(
@@ -936,6 +964,7 @@ class _HorPukListState extends State<HorPukList> {
           ),
         );
       },
+    ),
     );
   }
 }

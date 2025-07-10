@@ -36,12 +36,14 @@ class Room {
   Room({
     required this.roomName,
     required this.monthlyPrice,
+    required this.roomStatus,
     timeStamp
     
   });
   String roomName;
   int monthlyPrice;
   DateTime timeStamp = DateTime.now();
+  PaymentStatus roomStatus;
   Tenant? tenant;
   
   void addTenant(String tenantName,int depositPrice,int rentalStartUnix,int contract,int paymentStatus){
@@ -58,6 +60,7 @@ class Room {
     return tenant;
   }
 
+  
  
 }
 

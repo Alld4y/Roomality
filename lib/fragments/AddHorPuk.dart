@@ -71,7 +71,6 @@ class _AddHorPukState extends State<AddHorPuk> {
   late List<List<List<bool>>> _horPukRoom = [];
   late List<List<List<bool>>> _tempHorPukRoom = [];
 
-
   bool initHorPukRoomValid = false;
 
   @override
@@ -161,9 +160,8 @@ class _AddHorPukState extends State<AddHorPuk> {
                                 Color(0x00FFFFFF),
                                 Color(0xEEFFFFFF),
                                 Color(0xEEFFFFFF),
-
                               ],
-                            )
+                            ),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
@@ -237,7 +235,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                         }
                                       },
                                       onSaved: (value) {
-                                        horPukMonthlyPriceInput= int.parse(value.toString());
+                                        horPukMonthlyPriceInput = int.parse(
+                                          value.toString(),
+                                        );
                                       },
                                       maxLength: 5,
                                       textAlign: TextAlign.center,
@@ -280,7 +280,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                         }
                                       },
                                       onSaved: (value) {
-                                        horPukDepositPriceInput = int.parse(value.toString());
+                                        horPukDepositPriceInput = int.parse(
+                                          value.toString(),
+                                        );
                                       },
                                       maxLength: 5,
                                       textAlign: TextAlign.center,
@@ -322,7 +324,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                         }
                                       },
                                       onSaved: (value) {
-                                        horPukContract = int.parse(value.toString());
+                                        horPukContract = int.parse(
+                                          value.toString(),
+                                        );
                                       },
                                       maxLength: 5,
                                       textAlign: TextAlign.center,
@@ -408,19 +412,24 @@ class _AddHorPukState extends State<AddHorPuk> {
                                               _numberOfRow,
                                               (row) => [false],
                                             );
-                                            _allFloorsHaveSameRoom = List.generate(
-                                              _numberOfRow,
-                                              (row) => false,
+                                            _allFloorsHaveSameRoom =
+                                                List.generate(
+                                                  _numberOfRow,
+                                                  (row) => false,
+                                                );
+                                            print(
+                                              "_horPukFloor = $_horPukFloor",
                                             );
-                                            print("_horPukFloor = $_horPukFloor");
                                             _horPukFloor = List.generate(
                                               _horPukRow.length,
                                               (row) => [],
                                             );
                                             _horPukFloor = List.generate(
                                               _numberOfRow,
-                                              (row) =>
-                                                  List.generate(1, (_) => false),
+                                              (row) => List.generate(
+                                                1,
+                                                (_) => false,
+                                              ),
                                             );
                                             _horPukRoom = List.generate(
                                               _numberOfRow,
@@ -435,23 +444,29 @@ class _AddHorPukState extends State<AddHorPuk> {
                                   ),
                                   SizedBox(height: 20),
                                   Divider(
-                                  color: Colors.grey,
-                                  thickness: 1, // ความหนา
-                                  height: 0,   // ช่องว่างแนวตั้ง
-                                  indent: MediaQuery.of(context).size.width * 0.2,   // ขอบซ้าย
-                                  endIndent: MediaQuery.of(context).size.width * 0.2, // ขอบขวา
-                                ),
+                                    color: Colors.grey,
+                                    thickness: 1, // ความหนา
+                                    height: 0, // ช่องว่างแนวตั้ง
+                                    indent:
+                                        MediaQuery.of(context).size.width *
+                                        0.2, // ขอบซ้าย
+                                    endIndent:
+                                        MediaQuery.of(context).size.width *
+                                        0.2, // ขอบขวา
+                                  ),
                                   Center(
                                     child: SizedBox(
                                       width: 300,
                                       child: Padding(
                                         padding: EdgeInsets.only(
                                           left:
-                                              MediaQuery.of(context).size.width *
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.width *
                                               0.07,
                                         ),
                                         child: CheckboxListTile(
-                                          title: Text("กำหนดทีละชั้น / ห้อง"),
+                                          title: Text("ทีละแถว / ชั้น / ห้อง"),
                                           activeColor: Color.fromARGB(
                                             195,
                                             81,
@@ -478,24 +493,29 @@ class _AddHorPukState extends State<AddHorPuk> {
                                             255,
                                           ),
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10),
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
                                   Divider(
-                                  color: Colors.grey,
-                                  thickness: 1, // ความหนา
-                                  height: 0,   // ช่องว่างแนวตั้ง
-                                  indent: MediaQuery.of(context).size.width * 0.2,   // ขอบซ้าย
-                                  endIndent: MediaQuery.of(context).size.width * 0.2, // ขอบขวา
-                                ),
+                                    color: Colors.grey,
+                                    thickness: 1,
+                                    height: 0,
+                                    indent:
+                                        MediaQuery.of(context).size.width * 0.2,
+                                    endIndent:
+                                        MediaQuery.of(context).size.width * 0.2,
+                                  ),
                                   SizedBox(height: 20),
                                   _allRowsHaveSameFloor // ชั้นไม่เท่ากัน
                                       ? SizedBox(
                                         width:
-                                            MediaQuery.of(context).size.width * 0.8,
+                                            MediaQuery.of(context).size.width *
+                                            0.8,
                                         child: ListView.builder(
                                           physics:
                                               const NeverScrollableScrollPhysics(),
@@ -503,15 +523,17 @@ class _AddHorPukState extends State<AddHorPuk> {
                                           itemCount: _horPukRow.length,
                                           itemBuilder: (context, index) {
                                             return Padding(
-                                              padding: const EdgeInsets.symmetric(
-                                                vertical: 5,
-                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    vertical: 5,
+                                                  ),
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   color: Color(0x77FFFFFF),
-                                                  borderRadius: BorderRadius.all(
-                                                    Radius.circular(10),
-                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                        Radius.circular(10),
+                                                      ),
                                                 ),
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(
@@ -519,7 +541,8 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                   ),
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -532,9 +555,10 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                             ),
                                                         child: Text(
                                                           "แถวที่ ${index + 1}",
-                                                          style: GoogleFonts.prompt(
-                                                            fontSize: 20,
-                                                          ),
+                                                          style:
+                                                              GoogleFonts.prompt(
+                                                                fontSize: 20,
+                                                              ),
                                                         ),
                                                       ),
                                                       Center(
@@ -592,7 +616,8 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                     ),
                                                               ),
                                                               alignment:
-                                                                  Alignment.center,
+                                                                  Alignment
+                                                                      .center,
                                                               buttonStyleData: ButtonStyleData(
                                                                 width: 80,
                                                                 decoration: BoxDecoration(
@@ -607,7 +632,8 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                 ),
                                                                 padding:
                                                                     EdgeInsets.symmetric(
-                                                                      horizontal: 0,
+                                                                      horizontal:
+                                                                          0,
                                                                     ),
                                                               ),
                                                               items:
@@ -617,7 +643,8 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                     return DropdownMenuItem<
                                                                       int
                                                                     >(
-                                                                      value: item,
+                                                                      value:
+                                                                          item,
                                                                       child: Center(
                                                                         child: Text(
                                                                           item.toString(),
@@ -625,7 +652,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                       ),
                                                                     );
                                                                   }).toList(),
-                                                              onChanged: (value) {
+                                                              onChanged: (
+                                                                value,
+                                                              ) {
                                                                 // Floor Select when not same length
                                                                 setState(() {
                                                                   // ชั้นไม่เท่ากัน
@@ -635,32 +664,45 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                           value
                                                                               .toString(),
                                                                         ),
-                                                                        (_) => true,
+                                                                        (_) =>
+                                                                            true,
                                                                       );
-                                                                      print("_horPukRoom = $_horPukRoom");
-                                                                 if(!initHorPukRoomValid){
-                                                                  _horPukRoom =  _tempHorPukRoom;
-                                                                   _horPukRoom =
-                                                                      List.generate(
-                                                                        _numberOfRow,
-                                                                        (
-                                                                          _,
-                                                                        ) => List.generate(
-                                                                          int.parse(
-                                                                            value
-                                                                                .toString(),
-                                                                          ),
-                                                                          (_) => [
-                                                                            false,
-                                                                          ],
+                                                                  print(
+                                                                    "_horPukRoom = $_horPukRoom",
+                                                                  );
+                                                                  if (!initHorPukRoomValid) {
+                                                                    _horPukRoom =
+                                                                        _tempHorPukRoom;
+                                                                    _horPukRoom = List.generate(
+                                                                      _numberOfRow,
+                                                                      (
+                                                                        _,
+                                                                      ) => List.generate(
+                                                                        int.parse(
+                                                                          value
+                                                                              .toString(),
                                                                         ),
-                                                                      );
-                                                                  initHorPukRoomValid = true;
-                            
-                                                                 }else{
-                                                                  _horPukRoom[index] = List.generate(int.parse(value.toString()), (_) => [false]);
-                                                                 }
-                                                                  print("_horPukFloor = $_horPukFloor");
+                                                                        (_) => [
+                                                                          false,
+                                                                        ],
+                                                                      ),
+                                                                    );
+                                                                    initHorPukRoomValid =
+                                                                        true;
+                                                                  } else {
+                                                                    _horPukRoom[index] = List.generate(
+                                                                      int.parse(
+                                                                        value
+                                                                            .toString(),
+                                                                      ),
+                                                                      (_) => [
+                                                                        false,
+                                                                      ],
+                                                                    );
+                                                                  }
+                                                                  print(
+                                                                    "_horPukFloor = $_horPukFloor",
+                                                                  );
                                                                 });
                                                               },
                                                             ),
@@ -671,14 +713,13 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                         child: SizedBox(
                                                           width: 300,
                                                           child: Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                  left:
-                                                                      MediaQuery.of(
-                                                                        context,
-                                                                      ).size.width *
-                                                                      0.04,
-                                                                ),
+                                                            padding: EdgeInsets.only(
+                                                              left:
+                                                                  MediaQuery.of(
+                                                                    context,
+                                                                  ).size.width *
+                                                                  0.04,
+                                                            ),
                                                             child: CheckboxListTile(
                                                               // จำนวนห้องไม่เท่ากัน
                                                               title: Text(
@@ -700,7 +741,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                   _allFloorsHaveSameRoom[index] =
                                                                       !_allFloorsHaveSameRoom[index];
                                                                 });
-                                                                print("_allFloorsHaveSameRoom = $_allFloorsHaveSameRoom");
+                                                                print(
+                                                                  "_allFloorsHaveSameRoom = $_allFloorsHaveSameRoom",
+                                                                );
                                                               },
                                                               controlAffinity:
                                                                   ListTileControlAffinity
@@ -722,6 +765,7 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                           ),
                                                         ),
                                                       ),
+
                                                       _allFloorsHaveSameRoom[index]
                                                           ? Center(
                                                             child: Container(
@@ -742,7 +786,8 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                 ),
                                                               ),
                                                               child: ListView.builder(
-                                                                shrinkWrap: true,
+                                                                shrinkWrap:
+                                                                    true,
                                                                 physics:
                                                                     const NeverScrollableScrollPhysics(),
                                                                 itemCount:
@@ -753,11 +798,10 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                   floor,
                                                                 ) {
                                                                   return Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.symmetric(
-                                                                          vertical:
-                                                                              8.0,
-                                                                        ),
+                                                                    padding: const EdgeInsets.symmetric(
+                                                                      vertical:
+                                                                          8.0,
+                                                                    ),
                                                                     child: Column(
                                                                       crossAxisAlignment:
                                                                           CrossAxisAlignment
@@ -783,10 +827,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                         ),
                                                                         Center(
                                                                           child: Padding(
-                                                                            padding:
-                                                                                const EdgeInsets.all(
-                                                                                  6.0,
-                                                                                ),
+                                                                            padding: const EdgeInsets.all(
+                                                                              6.0,
+                                                                            ),
                                                                             child: Text(
                                                                               "จำนวนห้อง/ชั้น",
                                                                               style: GoogleFonts.prompt(
@@ -809,12 +852,13 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                                 isExpanded:
                                                                                     true,
                                                                                 dropdownStyleData: DropdownStyleData(
-                                                                                  maxHeight: 150,
+                                                                                  maxHeight:
+                                                                                      150,
                                                                                   width:
                                                                                       80,
                                                                                   direction:
                                                                                       DropdownDirection.textDirection,
-                            
+
                                                                                   decoration: BoxDecoration(
                                                                                     color: Color.fromARGB(
                                                                                       255,
@@ -845,27 +889,46 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                                                 onChanged: (
                                                                                   value,
                                                                                 ) {
-                                                                                  setState(() {
-                                                                                    _horPukRoom[index][floor] = List.generate(int.parse(value.toString()), (_) => true);
-                                                                                  print(
-                                                                                    "_horPukRoom $_horPukRoom",
+                                                                                  setState(
+                                                                                    () {
+                                                                                      _horPukRoom[index][floor] = List.generate(
+                                                                                        int.parse(
+                                                                                          value.toString(),
+                                                                                        ),
+                                                                                        (
+                                                                                          _,
+                                                                                        ) =>
+                                                                                            true,
+                                                                                      );
+                                                                                      print(
+                                                                                        "_horPukRoom $_horPukRoom",
+                                                                                      );
+                                                                                    },
                                                                                   );
-                                                                                  });
                                                                                 },
                                                                                 items:
-                                                                                    List.generate(20, (index)=>index+1).map((
-                                                                                      item,
-                                                                                    ) {
-                                                                                      return DropdownMenuItem(
-                                                                                        value:
-                                                                                            item,
-                                                                                        child: Center(
-                                                                                          child: Text(
-                                                                                            item.toString(),
+                                                                                    List.generate(
+                                                                                      20,
+                                                                                      (
+                                                                                        index,
+                                                                                      ) =>
+                                                                                          index +
+                                                                                          1,
+                                                                                    ).map(
+                                                                                      (
+                                                                                        item,
+                                                                                      ) {
+                                                                                        return DropdownMenuItem(
+                                                                                          value:
+                                                                                              item,
+                                                                                          child: Center(
+                                                                                            child: Text(
+                                                                                              item.toString(),
+                                                                                            ),
                                                                                           ),
-                                                                                        ),
-                                                                                      );
-                                                                                    }).toList(),
+                                                                                        );
+                                                                                      },
+                                                                                    ).toList(),
                                                                               ),
                                                                             ),
                                                                           ),
@@ -877,7 +940,137 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                               ),
                                                             ),
                                                           )
-                                                          : SizedBox(height: 0),
+                                                          : Column(
+                                                            // จำนวนห้องเท่ากันทุกชั้น
+                                                            children: [
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets.all(
+                                                                        5.0,
+                                                                      ),
+                                                                  child: Text(
+                                                                    "จำนวนห้อง/ทุกชั้น",
+                                                                    style: GoogleFonts.prompt(
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Center(
+                                                                child: SizedBox(
+                                                                  height: 40,
+                                                                  width: 80,
+                                                                  child: DropdownButtonHideUnderline(
+                                                                    child: DropdownButton2<
+                                                                      int
+                                                                    >(
+                                                                      value:
+                                                                          _horPukRoom[index][0]
+                                                                              .length,
+                                                                      isExpanded:
+                                                                          true,
+                                                                      dropdownStyleData: DropdownStyleData(
+                                                                        decoration: BoxDecoration(
+                                                                          color: Color.fromARGB(
+                                                                            255,
+                                                                            252,
+                                                                            248,
+                                                                            255,
+                                                                          ),
+                                                                          borderRadius: BorderRadius.all(
+                                                                            Radius.circular(
+                                                                              10,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        direction:
+                                                                            DropdownDirection.textDirection,
+                                                                        maxHeight:
+                                                                            150,
+                                                                        width:
+                                                                            80,
+                                                                        padding:
+                                                                            EdgeInsets.all(
+                                                                              8,
+                                                                            ),
+                                                                      ),
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .center,
+                                                                      buttonStyleData: ButtonStyleData(
+                                                                        decoration: BoxDecoration(
+                                                                          color:
+                                                                              textFieldColor,
+                                                                          borderRadius: BorderRadius.all(
+                                                                            Radius.circular(
+                                                                              100,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        padding: EdgeInsets.symmetric(
+                                                                          horizontal:
+                                                                              0,
+                                                                        ),
+                                                                      ),
+                                                                      items:
+                                                                          List.generate(
+                                                                            20,
+                                                                            (
+                                                                              index,
+                                                                            ) =>
+                                                                                index +
+                                                                                1,
+                                                                          ).map((
+                                                                            item,
+                                                                          ) {
+                                                                            return DropdownMenuItem<
+                                                                              int
+                                                                            >(
+                                                                              value:
+                                                                                  item,
+                                                                              child: Center(
+                                                                                child: Text(
+                                                                                  item.toString(),
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          }).toList(),
+                                                                      onChanged: (
+                                                                        value,
+                                                                      ) {
+                                                                        setState(() {
+                                                                          // กำหนดจำนวนห้องเท่ากันทุกชั้นในแถวนี้
+                                                                          for (
+                                                                            int
+                                                                            floor =
+                                                                                0;
+                                                                            floor <
+                                                                                _horPukRoom[index].length;
+                                                                            floor++
+                                                                          ) {
+                                                                            _horPukRoom[index][floor] = List.generate(
+                                                                              int.parse(
+                                                                                value.toString(),
+                                                                              ),
+                                                                              (
+                                                                                _,
+                                                                              ) =>
+                                                                                  true,
+                                                                            );
+                                                                          }
+                                                                          print(
+                                                                            "_horPukRoom = $_horPukRoom",
+                                                                          );
+                                                                        });
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                     ],
                                                   ),
                                                 ),
@@ -916,7 +1109,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius.all(
-                                                              Radius.circular(10),
+                                                              Radius.circular(
+                                                                10,
+                                                              ),
                                                             ),
                                                       ),
                                                       direction:
@@ -924,25 +1119,34 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                               .textDirection,
                                                       maxHeight: 150,
                                                       width: 80,
-                                                      padding: EdgeInsets.all(8),
+                                                      padding: EdgeInsets.all(
+                                                        8,
+                                                      ),
                                                     ),
                                                 alignment: Alignment.center,
-                                                buttonStyleData: ButtonStyleData(
-                                                  decoration: BoxDecoration(
-                                                    color: textFieldColor,
-                                                    borderRadius: BorderRadius.all(
-                                                      Radius.circular(100),
+                                                buttonStyleData:
+                                                    ButtonStyleData(
+                                                      decoration: BoxDecoration(
+                                                        color: textFieldColor,
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                              Radius.circular(
+                                                                100,
+                                                              ),
+                                                            ),
+                                                      ),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                            horizontal: 0,
+                                                          ),
                                                     ),
-                                                  ),
-                                                  padding: EdgeInsets.symmetric(
-                                                    horizontal: 0,
-                                                  ),
-                                                ),
                                                 items:
                                                     DropDownList().number.map((
                                                       item,
                                                     ) {
-                                                      return DropdownMenuItem<int>(
+                                                      return DropdownMenuItem<
+                                                        int
+                                                      >(
                                                         value: item,
                                                         child: Center(
                                                           child: Text(
@@ -954,10 +1158,22 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                 onChanged: (value) {
                                                   // Handle dropdown value change
                                                   setState(() {
-                                                    _horPukRoom = List.generate(int.parse(_numberOfRow.toString()), (_) => List.generate(int.parse(value.toString()), (_) => [false]));
+                                                    _horPukRoom = List.generate(
+                                                      int.parse(
+                                                        _numberOfRow.toString(),
+                                                      ),
+                                                      (_) => List.generate(
+                                                        int.parse(
+                                                          value.toString(),
+                                                        ),
+                                                        (_) => [false],
+                                                      ),
+                                                    );
                                                     initHorPukRoomValid = false;
-                            
-                                                    print("_horPukRoom = $_horPukRoom");
+
+                                                    print(
+                                                      "_horPukRoom = $_horPukRoom",
+                                                    );
                                                   });
                                                 },
                                               ),
@@ -990,7 +1206,9 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius.all(
-                                                              Radius.circular(10),
+                                                              Radius.circular(
+                                                                10,
+                                                              ),
                                                             ),
                                                       ),
                                                       direction:
@@ -998,25 +1216,35 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                               .textDirection,
                                                       maxHeight: 150,
                                                       width: 80,
-                                                      padding: EdgeInsets.all(8),
+                                                      padding: EdgeInsets.all(
+                                                        8,
+                                                      ),
                                                     ),
                                                 alignment: Alignment.center,
-                                                buttonStyleData: ButtonStyleData(
-                                                  decoration: BoxDecoration(
-                                                    color: textFieldColor,
-                                                    borderRadius: BorderRadius.all(
-                                                      Radius.circular(100),
+                                                buttonStyleData:
+                                                    ButtonStyleData(
+                                                      decoration: BoxDecoration(
+                                                        color: textFieldColor,
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                              Radius.circular(
+                                                                100,
+                                                              ),
+                                                            ),
+                                                      ),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                            horizontal: 0,
+                                                          ),
                                                     ),
-                                                  ),
-                                                  padding: EdgeInsets.symmetric(
-                                                    horizontal: 0,
-                                                  ),
-                                                ),
                                                 items:
-                                                    List.generate(20, (index)=>index+1).map((
-                                                      item,
-                                                    ) {
-                                                      return DropdownMenuItem<int>(
+                                                    List.generate(
+                                                      20,
+                                                      (index) => index + 1,
+                                                    ).map((item) {
+                                                      return DropdownMenuItem<
+                                                        int
+                                                      >(
                                                         value: item,
                                                         child: Center(
                                                           child: Text(
@@ -1028,14 +1256,33 @@ class _AddHorPukState extends State<AddHorPuk> {
                                                 onChanged: (value) {
                                                   // Handle dropdown value change
                                                   setState(() {
-                                                    for(int row = 0 ; row < _horPukRoom.length ; row++){
-                                                      for(int floor = 0 ; floor < _horPukRoom[row].length ; floor++){
-                                                        _horPukRoom[row][floor] = List.generate(int.parse(value.toString()), (_) => true);
+                                                    for (
+                                                      int row = 0;
+                                                      row < _horPukRoom.length;
+                                                      row++
+                                                    ) {
+                                                      for (
+                                                        int floor = 0;
+                                                        floor <
+                                                            _horPukRoom[row]
+                                                                .length;
+                                                        floor++
+                                                      ) {
+                                                        _horPukRoom[row][floor] =
+                                                            List.generate(
+                                                              int.parse(
+                                                                value
+                                                                    .toString(),
+                                                              ),
+                                                              (_) => true,
+                                                            );
                                                       }
                                                     }
                                                     initHorPukRoomValid = false;
-                            
-                                                    print("_horPukRoom = $_horPukRoom");
+
+                                                    print(
+                                                      "_horPukRoom = $_horPukRoom",
+                                                    );
                                                   });
                                                 },
                                               ),
@@ -1052,45 +1299,116 @@ class _AddHorPukState extends State<AddHorPuk> {
                         SizedBox(height: 20),
                         Center(
                           child: ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               _formKey.currentState!.validate();
                               _formKey.currentState!.save();
                               List<HorPukRow> horPuk = [];
 
-                              for(int row = 0 ; row < _horPukRoom.length ; row++){
-                                horPuk.add(HorPukRow(rowName: "แถวที่ ${row+1}", floor: []));
-                                for(int floor = 0 ; floor < _horPukRoom[row].length ; floor++){
+                              for (
+                                int row = 0;
+                                row < _horPukRoom.length;
+                                row++
+                              ) {
+                                horPuk.add(
+                                  HorPukRow(
+                                    rowName: "แถวที่ ${row + 1}",
+                                    floor: [],
+                                  ),
+                                );
+                                for (
+                                  int floor = 0;
+                                  floor < _horPukRoom[row].length;
+                                  floor++
+                                ) {
                                   print(horPuk);
-                                  horPuk[row].floor.add(HorPukFloor(floorName: "ชั้นที่ ${floor+1}", rooms: []));
-                                  for(int room = 0 ; room < _horPukRoom[row][floor].length ; room++){
-                                    horPuk[row].floor[floor].rooms.add(SubRoom(paymentStatus: PaymentStatus.noTenant, roomName: "${row+1}${_horPukRoom[row].length == 1 ? "" : floor+1}${room+1 > 9 ? room+1 : "0${room+1}"}", monthlyPrice: int.parse(horPukMonthlyPriceInput.toString()), depositPrice: int.parse(horPukDepositPriceInput.toString()), rentalStartUnix: DateTime.now(), contract: int.parse(horPukContract.toString())));
+                                  horPuk[row].floor.add(
+                                    HorPukFloor(
+                                      floorName: "ชั้นที่ ${floor + 1}",
+                                      rooms: [],
+                                    ),
+                                  );
+                                  for (
+                                    int room = 0;
+                                    room < _horPukRoom[row][floor].length;
+                                    room++
+                                  ) {
+                                    horPuk[row].floor[floor].rooms.add(
+                                      SubRoom(
+                                        paymentStatus: PaymentStatus.noTenant,
+                                        roomName:
+                                            "${row + 1}${_horPukRoom[row].length == 1 ? "" : floor + 1}${room + 1 > 9 ? room + 1 : "0${room + 1}"}",
+                                        monthlyPrice: int.parse(
+                                          horPukMonthlyPriceInput.toString(),
+                                        ),
+                                        depositPrice: int.parse(
+                                          horPukDepositPriceInput.toString(),
+                                        ),
+                                        rentalStartUnix: DateTime.now(),
+                                        contract: int.parse(
+                                          horPukContract.toString(),
+                                        ),
+                                      ),
+                                    );
                                   }
                                 }
                               }
                               print(horPuk[0].floor[0].rooms.length);
 
-                              horPukProvider.createHorPuk(horPukNameInput, horPuk);
-                              
-
+                              try {
+                                await horPukProvider.createHorPuk(
+                                  horPukNameInput,
+                                  horPuk,
+                                );
+                                _formKey.currentState!.reset();
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (ctx) => const Home(),
+                                  ), // MaterialPageRoute
+                                );
+                              } catch (e) {
+                                // แสดง error dialog
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                        'ข้อผิดพลาด',
+                                        style: GoogleFonts.prompt(),
+                                      ),
+                                      content: Text(
+                                        e.toString().replaceAll(
+                                          'Exception: ',
+                                          '',
+                                        ),
+                                        style: GoogleFonts.prompt(),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text(
+                                            'ตกลง',
+                                            style: GoogleFonts.prompt(),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
 
                               // for(var horPuk in horPukProvider.horPukData){
                               //   if(horPuk.horPukName == horPukNameInput){
-                                  
+
                               //   }
                               // }
-
-                              _formKey.currentState!.reset();
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (ctx) => const Home(),
-                                ), // MaterialPageRoute
-                              );
                             },
                             child: Text("ยืนยัน"),
                           ),
                         ),
-                        SizedBox(height: 30)
+                        SizedBox(height: 30),
                       ],
                     ),
                   ),

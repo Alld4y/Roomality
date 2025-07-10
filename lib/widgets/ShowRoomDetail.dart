@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:roomality/fragments/HorPukFragment.dart';
+import 'package:roomality/fragments/RoomFragment.dart';
 
-class ShowDetail extends StatefulWidget {
+class ShowRoomDetail extends StatefulWidget {
   final int index;
-  final int row;
-  final int floor;
-  final int room;
-  const ShowDetail({super.key, required this.index, required this.row, required this.floor, required this.room});
+  const ShowRoomDetail({super.key, required this.index});
 
   @override
-  State<ShowDetail> createState() => _ShowDetailState();
+  State<ShowRoomDetail> createState() => _ShowRoomDetailState();
 }
 
-class _ShowDetailState extends State<ShowDetail> {
+class _ShowRoomDetailState extends State<ShowRoomDetail> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,7 +20,7 @@ class _ShowDetailState extends State<ShowDetail> {
           foregroundColor: const Color.fromARGB(255, 96, 90, 138)
         ),
         onPressed: () {
-          Navigator.push(context,MaterialPageRoute(builder: (context) => HorPukFragment(index: widget.index,row: widget.row,floor:widget.floor,room:widget.room)));
+         Navigator.push(context,MaterialPageRoute(builder: (context) => RoomFragment(index: widget.index)));
         },
         child: Text("ดูข้อมูล", style: GoogleFonts.prompt(fontSize: 16))
         ),
